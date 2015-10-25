@@ -1,7 +1,7 @@
 CakePHP-Summernote
 ====================
 
-Summernote plugin for CakePHP 2.x
+Summernote (http://summernote.org) plugin for CakePHP 2.x
 
 Installation
 ============
