@@ -20,8 +20,7 @@ class SummernoteHelper extends Helper {
     public $configs = array(
         'cssClass' => 'summernote',
         'lang' => 'en',
-        //'height' => 280,
-        //'absoluteURLs' => 'false',
+        'height' => '200',
         'toolbar' => 'complete'
     );
     public $fields_count = 0;
@@ -32,7 +31,6 @@ class SummernoteHelper extends Helper {
         if (!empty($configs) && is_array($configs)) {
             $this->configs = array_merge($configs, $options);
         }
-//        $this->configs['sitebaseURL'] = 'http://' . $_SERVER['SERVER_NAME'] . Router::url('/');
     }
 
     public function afterRender($viewFile) {
@@ -44,8 +42,6 @@ class SummernoteHelper extends Helper {
     }
 
     public function render($fieldName, $options = array()) {
-        //$this->Form->setEntity($fieldName);
-        //$id = ucfirst($this->Form->model()).ucfirst($this->Form->field());
         $id = $this->domId($fieldName);
         if (!strpos($fieldName, ".")) {
             $id = ucfirst($this->Form->model()) . ucfirst($id);
@@ -53,10 +49,13 @@ class SummernoteHelper extends Helper {
         $options = array_merge($this->configs, $options);
         $js = "
             $(document).ready(function(){
-				$('#" . $id . "').summernote();
+				$('#" . $id . "').summernote({
+                                    height: ". $options['height'] ."                                    
+                                });
             });
         ";
         $this->fields_count = $this->fields_count + 1;
         $this->Html->scriptBlock($js, array("inline" => false));
     }
+
 }
