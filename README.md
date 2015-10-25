@@ -8,9 +8,15 @@ Installation
 
 Your need HTML5 doctype and jQuery enabled in the page. Plugin works fine with jQuery 1.9.1.
 
-You can install the plugin in your app folder using the following command:
+You have two ways to install plugin in your app folder:
+
+Standalone plugin:
 
 `git clone git://github.com/zhaff/CakePHP-Summernote.git Plugin/Summernote`
+
+As submodule:
+
+`git submodule add git://github.com/zhaff/CakePHP-Summernote.git Plugin/Summernote`
 
 Usage
 =====
