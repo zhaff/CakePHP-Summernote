@@ -23,14 +23,17 @@ Usage
 
 Bootstrap
 ---------
-`<?php
+```php
+<?php
 //...some code
 CakePlugin::load('Summernote');`
-
+```
 
 Controller
 ----------
-`<?php
+
+```php
+<?php
 class MyController extends AppController
 {
     public $helpers = array(
@@ -40,14 +43,25 @@ class MyController extends AppController
 	);
 }
 ?>
-`
+```
 
 View
 ----
-`<?php
+```php
+<?php
     echo $this->Form->input('fieldName'),
          $this->Editor->render('fieldName');
-`
+?>
+```
+
+To change the height size, use this:
+
+```php
+<?php 
+    echo $this->Form->input('message', array('class' => 'form-control')), 
+        $this->Editor->render('message', array('height' => '200')); 
+?>
+```
 
 Known bugs
 ==========
