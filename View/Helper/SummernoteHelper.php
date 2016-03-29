@@ -21,7 +21,8 @@ class SummernoteHelper extends Helper {
         'cssClass' => 'summernote',
         'lang' => 'en',
         'height' => '200',
-        'toolbar' => 'complete'
+        'toolbar' => 'complete',
+        'inline' => false,
     );
     public $fields_count = 0;
 
@@ -44,7 +45,7 @@ class SummernoteHelper extends Helper {
     public function render($fieldName, $options = array()) {
         $id = $this->domId($fieldName);
         if (!strpos($fieldName, ".")) {
-            $id = ucfirst($this->Form->model()) . ucfirst($id);
+            $id = ucfirst($this->Form->model()) . Inflector::camelize($id);
         }
         $options = array_merge($this->configs, $options);
         $js = "
@@ -55,7 +56,7 @@ class SummernoteHelper extends Helper {
             });
         ";
         $this->fields_count = $this->fields_count + 1;
-        $this->Html->scriptBlock($js, array("inline" => false));
+        $this->Html->scriptBlock($js, array("inline" => $options['inline']));
     }
 
 }
